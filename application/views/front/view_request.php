@@ -1,4 +1,4 @@
-<?php $this->load->view('header',$user); ?>
+<?php $this->load->view('header',$user,$nav); ?>
 
 <!-- Content Wrapper. Contains page content -->
 <?php
@@ -14,10 +14,12 @@
     <div class="content my-5 py-5">
       <div class="container">
         <div class="row">
-          <div class="col-lg-12 ">
+          <div class="col-sm-12 ">
             <div class="card ">  
                 <div class="card-body">
+                  <div class="table-responsive">
                     <table class="table table-bordered">
+                      <thead class="col-sm-12">
                         <tr>
                             <th scope="col">Sl no.</th>
                             <th scope="col">Receiver Name</th>
@@ -27,6 +29,8 @@
                             <th scope="col">BloodGroup</th>
                             <th scope="col" class="text-center">Action</th>
                         </tr>
+                      </thead>
+                      <tbody class="col-sm-12">  
                         <?php if (!empty($receivers)){ 
                           $no=1;?>
                           <?php foreach($receivers as $receiver){ ?>
@@ -50,9 +54,11 @@
                           }
                             
                         }else { ?>
-                          <td colspan='8' class="text-center alert alert-danger">No Record found</td>
+                          <td colspan='12' class="text-center alert alert-danger">No Record found</td>
                         <?php } ?>
+                      </tbody>  
                     </table>
+                  </div><!--end of table responsive-->
                 </div><!-- end of table body-->
             </div><!-- /.card -->
           </div>

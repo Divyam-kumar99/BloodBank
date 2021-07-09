@@ -1,4 +1,4 @@
-<?php $this->load->view('header.php');?>
+<?php $this->load->view('header.php',$nav);?>
     <div class="container">
         <?php
         $success=$this->session->flashdata('success');
@@ -52,7 +52,7 @@
                         </div>
                         <?=form_error('bloodgroup')?> 
 
-                        <div class="row  mb-3">
+                        <div class="row mb-3">
                             <div class="input-group col-sm-6 mb-3">
                                 <input type="password" name="password" placeholder="Password" class="form-control">
                                 <div class="input-group-append">

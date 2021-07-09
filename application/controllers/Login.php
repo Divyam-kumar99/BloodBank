@@ -7,13 +7,14 @@ class Login extends CI_Controller{
         $user=$this->session->userdata('user');
         
         if(!empty($user)){
-            $this->session->set_flashdata('Success','Already Logged in');
+            $this->session->set_flashdata('success','Already Logged in');
             redirect(base_url().'home/index');
         }
     } 
 
     // this function show the login page 
     public function index(){
+        $data['nav']="login";
         $data['user']=$this->session->userdata('user');
         $this->load->view('login/login',$data);
     }
@@ -21,7 +22,7 @@ class Login extends CI_Controller{
     //allow users to login after entering the email and password 
     public function authenticate(){
         $this->load->model('Login_model');
-
+        $data['nav']="login";
         $this->form_validation->set_rules('loginid', 'Login ID' ,'required');
         $this->form_validation->set_rules('password', 'password' ,'required');
         $this->form_validation->set_error_delimiters('<p class="invalid-feedback">', '</p>');
@@ -65,11 +66,12 @@ class Login extends CI_Controller{
             }
         }
         else{
-            $this->load->view('login/login');
+            $this->load->view('login/login',$data);
         }
     }
     // this is the register page for new user
     function register_receiver(){
+        $data['nav']="login";
         $this->load->model('Login_model');
         $this->form_validation->set_rules('name', 'name' ,'required');
         $this->form_validation->set_rules('email', 'E-mail' ,'required');
@@ -109,12 +111,12 @@ class Login extends CI_Controller{
             }
             else{
                 $this->session->set_flashdata('fail','Passwords do not match. Try again');
-                redirect(base_url('login/register_receiver'));
+                redirect(base_url('login/register_receiver'),$data);
                 
             }
 
         }else{
-            $this->load->view('login/receiver_registration');
+            $this->load->view('login/receiver_registration',$data);
         }
     }
     // this is the register page for new user
@@ -128,8 +130,7 @@ class Login extends CI_Controller{
         $this->form_validation->set_rules('password', 'password' ,'required');
         $this->form_validation->set_rules('cpassword', 'Confirm Password' ,'required');
         $this->form_validation->set_error_delimiters('<p class="invalid-feedback">', '</p>');
-
-
+        $data['nav']="login";
         if($this->form_validation->run()){
             if($this->input->post('password')==$this->input->post('cpassword')){
             
@@ -157,12 +158,12 @@ class Login extends CI_Controller{
             }
             else{
                 $this->session->set_flashdata('fail','Passwords do not match. Try again');
-                redirect(base_url('login/register_hospital'));
+                redirect(base_url('login/register_hospital'),$data);
                 
             }
 
         }else{
-            $this->load->view('login/hospital_registration');
+            $this->load->view('login/hospital_registration',$data);
         }
     }
 

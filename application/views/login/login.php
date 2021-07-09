@@ -1,4 +1,4 @@
-<?php $this->load->view('header.php',$user);?>
+<?php $this->load->view('header.php',$nav);?>
 
   <div class="container">
     <?php

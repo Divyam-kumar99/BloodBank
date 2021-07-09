@@ -15,7 +15,7 @@ class Hospital extends CI_controller{
         }
     } 
     function add_blood($user_id){
-
+        $data['nav']="addblood";
         $data['user']=$this->session->userdata('user');
         $data['user_id']=$user_id;
         $this->form_validation->set_rules('bloodgroup','Blood Group Type is required','trim|required');
@@ -45,6 +45,7 @@ class Hospital extends CI_controller{
 
     }
     function view_request($hospital_id){
+        $data['nav']="viewrequest";
 
         $data['user']=$this->session->userdata('user');
         $data['receivers']= $this->Hospital_model->get_all_receivers($hospital_id);

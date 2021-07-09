@@ -1,4 +1,4 @@
-<?php $this->load->view('header',$user); ?>
+<?php $this->load->view('header',$user,$nav); ?>
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper mt-5" style="min-height: 48vh;">
@@ -7,7 +7,7 @@
     <div class="content">
       <div class="container">
         <div class="row">
-          <div class="col-lg-12">
+          <div class="col-sm-12">
             <div class="card">
               <div class="card-header bg bg-primary">Add Blood Group</div>
             <form action="<?= base_url('hospital/add_blood/').$user_id;?>"  method="post" enctype="multipart/form-data">

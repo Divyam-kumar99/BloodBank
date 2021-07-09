@@ -16,11 +16,13 @@ class Home extends CI_controller{
             $user_id=$data['user']['login_id'];
             $data['receiver']= $this->Receiver_model->get_receiver($user_id);
         }
+        $data['nav']="home";
         $data['availables']=$this->Hospital_model->show_blood_available();
         $this->load->view('front/home',$data);
 
     }
     function services(){
+        $data['nav']="services";
         $data['user']=$this->session->userdata('user');
         $this->load->view('front/services',$data);
         

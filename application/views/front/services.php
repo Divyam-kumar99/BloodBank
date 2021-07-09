@@ -1,4 +1,4 @@
-<?php $this->load->view('header',$user); ?>
+<?php $this->load->view('header',$user,$nav); ?>
 </div> <!--end of carousel-->
  <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">

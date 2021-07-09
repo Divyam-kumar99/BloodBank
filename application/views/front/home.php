@@ -1,4 +1,4 @@
-<?php $this->load->view('header',$user); ?>
+<?php $this->load->view('header',$user,$nav); ?>
 <!-- carousel  -->
 <div class="container">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -47,7 +47,9 @@
                     </div>
                 </div>  
                 <div class="card-body">
-                    <table class="table table-bordered col-sm-12">
+                  <div class="table-responsive">
+                    <table class="table table-bordered">
+                      <thead>
                         <tr>
                             <th scope="col">Sl no.</th>
                             <th scope="col">Hospital Name</th>
@@ -56,10 +58,12 @@
                             <th scope="col">Email</th>
                             <th scope="col">Available Blood Group</th>
                             <th scope="col">Units</th>
-                            <?php if(!empty($user)&& $user['role']=='Receiver'){?>
-                              <th scope="col">Action</th>
+                            <?php if(empty($user) || $user['role']=='Receiver'){?>
+                              <th scope="col" class="text-center">Action</th>
                             <?php } ?>
                         </tr>
+                      </thead>
+                      <tbody>
                         <?php if (!empty($availables)){ 
                           $no=1;?>
                           <?php foreach($availables as $available){ ?>
@@ -99,9 +103,9 @@
                         }else { ?>
                           <td colspan='8' class="text-center alert alert-danger">No Record found</td>
                         <?php } ?>
-                    
+                      </tbody>
                     </table>
-                   
+                  </div> 
                 
                 </div><!-- end of table body-->
             </div><!-- /.card -->

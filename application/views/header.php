@@ -5,12 +5,9 @@
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
     <!-- Bootstrap CSS -->
-  <!-- <link rel="stylesheet" href= "<?php echo base_url()?>public/admin/plugins/fontawesome-free/css/all.min.css"> -->
 
     <link rel="stylesheet" href="<?=base_url('assets/fontawesome-free/css/all.min.css')?>">
     <link rel="stylesheet" href="<?=base_url('assets/css/bootstrap.min.css')?>">
-    <!-- <link rel="stylesheet" href="/assets/css/bootstrap.min.css"> -->
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"> -->
     <title> Blood Bank </title>
     <style>
         .invalid-feedback{
@@ -30,22 +27,22 @@
       
           <div class="collapse navbar-collapse right-align" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item mr-3">
+              <li class="nav-item mr-3 <?= (!empty($nav) && $nav=='home')? 'active' : '';?>">
                 <a class="nav-link" href="<?=base_url('home/index');?>">Home</a>
               </li>
-              <li class="nav-item mr-3">
+              <li class="nav-item mr-3 <?= (!empty($nav) && $nav=='services')? 'active' : '';?>">
                 <a class="nav-link" href="<?=base_url('home/services')?>"> Services </a>
               </li>
               <?php if(empty($user)){?>
-                <li class="nav-item mr-3">
+                <li class="nav-item mr-3 <?= (!empty($nav) && $nav=='login')? 'active' : '';?>">
                   <a class="nav-link" href="<?=base_url('login')?>" > Sign-in </a>
                 </li>
               <?php }else{
                 if($user['role']=="Hospital"){?>
-                <li class="nav-item mr-3">
+                <li class="nav-item mr-3 <?= (!empty($nav) && $nav=='addblood')? 'active' : '';?>">
                   <a class="nav-link" href="<?=base_url('hospital/add_blood/').$user['user_id']?>" > Add Blood Sample </a>
                 </li> 
-                <li class="nav-item mr-3">
+                <li class="nav-item mr-3 <?= (!empty($nav) && $nav=='viewrequest')? 'active' : '';?>">
                   <a class="nav-link" href="<?=base_url('hospital/view_request/').$user['user_id']?>" > View Request </a>
                 </li> 
               <?php }?>
